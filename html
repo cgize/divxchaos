@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Divinas a Chaos</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    input {
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Calculadora Divinas a Chaos</h2>
+
+  <label for="divinasInput">Cantidad de Divinas:</label>
+  <input type="number" id="divinasInput" placeholder="Ingrese la cantidad de divinas" required>
+
+  <button onclick="calcularChaos()">Calcular</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    function calcularChaos() {
+      var divinas = document.getElementById('divinasInput').value;
+      var valorChaos = 150;
+      var resultado = divinas * valorChaos;
+
+      document.getElementById('resultado').innerText = divinas + ' Divinas son equivalentes a ' + resultado + ' Chaos.';
+    }
+  </script>
+
+</body>
+</html>
