@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora Divinas a Chaos</title>
+  <title>Calculadora Divines a Chaos</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -25,10 +25,13 @@
 </head>
 <body>
 
-  <h2>Calculadora Divinas a Chaos</h2>
+  <h2>Calculadora Divines a Chaos</h2>
 
-  <label for="divinasInput">Cantidad de Divinas:</label>
-  <input type="number" id="divinasInput" placeholder="Ingrese la cantidad de Divs" required>
+  <label for="divinesInput">Cantidad de Divines:</label>
+  <input type="number" id="divinesInput" placeholder="Ingrese la cantidad de divines" required>
+
+  <label for="valorActualInput">Valor actual de Divines a Chaos:</label>
+  <input type="number" id="valorActualInput" placeholder="Ingrese el valor actual" required>
 
   <button onclick="calcularChaos()">Calcular</button>
 
@@ -36,11 +39,11 @@
 
   <script>
     function calcularChaos() {
-      var divinas = document.getElementById('divinasInput').value;
-      var valorChaos = 150;
-      var resultado = divinas * valorChaos;
+      var divines = document.getElementById('divinesInput').value;
+      var valorActual = document.getElementById('valorActualInput').value;
+      var resultado = divines * valorActual;
 
-      document.getElementById('resultado').innerText = divinas + ' Divs son equivalentes a ' + resultado + ' Chaos.';
+      document.getElementById('resultado').innerText = divines + ' Divines son equivalentes a ' + resultado + ' Chaos.';
     }
   </script>
 
