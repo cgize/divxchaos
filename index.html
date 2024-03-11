@@ -1,65 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora Divines a Chaos</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      margin: 20px;
-    }
-    input {
-      padding: 8px;
-      margin-bottom: 10px;
-    }
-    button {
-      padding: 10px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Divinas a Caos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        input {
+            width: 50px;
+        }
+
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+    <h1>Calculadora de Divinas a Caos</h1>
+    
+    <label for="divineInput">Valor actual de Divinas a Caos:</label>
+    <input type="number" id="divineInput" value="150">
+    
+    <br>
 
-  <h2>Calculadora Divines a Chaos</h2>
+    <label for="quantityInput">Cantidad de Divinas:</label>
+    <input type="number" id="quantityInput">
+    
+    <br>
 
-  <label for="divinesInput">Cantidad de Divines:</label>
-  <input type="number" id="divinesInput" placeholder="Ingrese la cantidad de divines" required>
+    <button onclick="calcular()">Calcular</button>
+    
+    <div id="result"></div>
 
-  <button onclick="obtenerValorActual()">Obtener Valor Actual</button>
+    <script>
+        function calcular() {
+            var valorDivineACaos = parseFloat(document.getElementById('divineInput').value);
+            var cantidadDivinas = parseFloat(document.getElementById('quantityInput').value);
 
-  <label for="valorActualInput">Valor actual de Divines a Chaos:</label>
-  <input type="number" id="valorActualInput" placeholder="Valor actual" readonly>
+            if (isNaN(valorDivineACaos) || isNaN(cantidadDivinas)) {
+                alert("Por favor, ingresa valores válidos.");
+                return;
+            }
 
-  <button onclick="calcularChaos()">Calcular</button>
+            var resultadoChaos = valorDivineACaos * cantidadDivinas;
+            var resultadoDivsChaos = Math.floor(resultadoChaos);
+            var restoChaos = (resultadoChaos - resultadoDivsChaos) * 100;
 
-  <p id="resultado"></p>
-
-  <script>
-    function obtenerValorActual() {
-      fetch('https://poe.ninja/api/data/currencyoverview?league=Affliction&type=Currency')
-        .then(response => response.json())
-        .then(data => {
-          // Supongamos que el valor que nos interesa es el de los Divines a Chaos
-          var valorDivinesAChaos = data.lines.find(currency => currency.currencyTypeName === 'Divine Orb').chaosEquivalent;
-
-          document.getElementById('valorActualInput').value = valorDivinesAChaos;
-        })
-        .catch(error => console.error('Error al obtener el valor actual:', error));
-    }
-
-    function calcularChaos() {
-      var divines = document.getElementById('divinesInput').value;
-      var valorActual = document.getElementById('valorActualInput').value;
-      var resultado = divines * valorActual;
-
-      document.getElementById('resultado').innerText = divines + ' Divines son equivalentes a ' + resultado + ' Chaos.';
-    }
-  </script>
-
+            document.getElementById('result').innerHTML = `
+                <p>Cantidad de Divinas: ${cantidadDivinas}</p>
+                <p>Equivalente a Chaos: ${resultadoDivsChaos} Chaos</p>
+                <p>Divinas + Chaos: ${Math.floor(resultadoDivsChaos)} div ${restoChaos.toFixed(0)} Chaos</p>
+            `;
+        }
+    </script>
 </body>
 </html>
