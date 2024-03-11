@@ -29,6 +29,7 @@
         #result {
             margin-top: 20px;
             color: rgba(13, 17, 23, 1); /* Color del texto del resultado */
+            font-weight: bold; /* Texto en negrita */
         }
     </style>
 </head>
@@ -63,7 +64,7 @@
             var resultadoDivinesChaos = Math.floor(resultadoChaos);
             var restoChaos = resultadoChaos % 1; // Obtener la parte decimal
             var resultadoDivsChaos = {
-                divs: Math.floor(resultadoDivinesChaos),
+                divs: Math.floor(resultadoDivinesChaos / valorDivineACaos),
                 chaos: Math.round(restoChaos * 100)
             };
 
