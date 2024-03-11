@@ -28,7 +28,7 @@
 
         #result {
             margin-top: 20px;
-            color: rgba(13, 17, 23, 1); /* Color del texto del resultado */
+            color: white; /* Color del texto del resultado */
             font-weight: bold; /* Texto en negrita */
         }
     </style>
@@ -62,10 +62,10 @@
 
             var resultadoChaos = valorDivineACaos * cantidadDivines;
             var resultadoDivinesChaos = Math.floor(resultadoChaos);
-            var restoChaos = resultadoChaos % 1; // Obtener la parte decimal
+            var restoChaos = resultadoChaos % valorDivineACaos;
             var resultadoDivsChaos = {
-                divs: Math.floor(resultadoDivinesChaos / valorDivineACaos),
-                chaos: Math.round(restoChaos * 100)
+                divs: Math.floor(resultadoChaos / valorDivineACaos),
+                chaos: Math.round(restoChaos)
             };
 
             document.getElementById('result').innerHTML = `
