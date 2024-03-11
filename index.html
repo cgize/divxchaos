@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Divinas a Caos</title>
+    <title>Calculadora de Divines a Chaos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,14 +27,14 @@
     </style>
 </head>
 <body>
-    <h1>Calculadora de Divinas a Caos</h1>
+    <h1>Calculadora de Divines a Chaos</h1>
     
-    <label for="divineInput">Valor actual de Divinas a Caos:</label>
+    <label for="divineInput">Valor actual de Divines a Chaos:</label>
     <input type="number" id="divineInput" value="150">
     
     <br>
 
-    <label for="quantityInput">Cantidad de Divinas:</label>
+    <label for="quantityInput">Cantidad de Divines:</label>
     <input type="number" id="quantityInput">
     
     <br>
@@ -46,21 +46,25 @@
     <script>
         function calcular() {
             var valorDivineACaos = parseFloat(document.getElementById('divineInput').value);
-            var cantidadDivinas = parseFloat(document.getElementById('quantityInput').value);
+            var cantidadDivines = parseFloat(document.getElementById('quantityInput').value);
 
-            if (isNaN(valorDivineACaos) || isNaN(cantidadDivinas)) {
+            if (isNaN(valorDivineACaos) || isNaN(cantidadDivines)) {
                 alert("Por favor, ingresa valores válidos.");
                 return;
             }
 
-            var resultadoChaos = valorDivineACaos * cantidadDivinas;
-            var resultadoDivsChaos = Math.floor(resultadoChaos);
-            var restoChaos = (resultadoChaos - resultadoDivsChaos) * 100;
+            var resultadoChaos = valorDivineACaos * cantidadDivines;
+            var resultadoDivinesChaos = Math.floor(resultadoChaos);
+            var restoChaos = resultadoChaos % 1; // Obtener la parte decimal
+            var resultadoDivsChaos = {
+                divs: Math.floor(resultadoDivinesChaos),
+                chaos: Math.round(restoChaos * 100)
+            };
 
             document.getElementById('result').innerHTML = `
-                <p>Cantidad de Divinas: ${cantidadDivinas}</p>
-                <p>Equivalente a Chaos: ${resultadoDivsChaos} Chaos</p>
-                <p>Divinas + Chaos: ${Math.floor(resultadoDivsChaos)} div ${restoChaos.toFixed(0)} Chaos</p>
+                <p>Cantidad de Divines: ${cantidadDivines}</p>
+                <p>Equivalente a Chaos: ${resultadoDivinesChaos} Chaos</p>
+                <p>Divines + Chaos: ${resultadoDivsChaos.divs} div ${resultadoDivsChaos.chaos} Chaos</p>
             `;
         }
     </script>
