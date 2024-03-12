@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <a href="https://github.com/cgize/divxchaos/" target="_blank">
   <img src="logo/logo-repo.png" alt="GitHub" style="position: fixed; top: 0; right: 0; border: 0; z-index: 999; width: 42px; height: 42px;">
 </a>
 
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Divines a Chaos</title>
+    <title>Calculadora Divines y Chaos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,21 +30,28 @@
             border: none;
         }
 
-        #result {
+        #result, #resultInverso {
             margin-top: 20px;
             color: white; /* Color del texto del resultado */
             font-weight: bold; /* Texto en negrita */
         }
+
+        #valueInput {
+            margin-bottom: 20px;
+            border: 2px solid white;
+            padding: 10px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
+    <div id="valueInput">
+        <label for="divineInput">Valor actual de 1 Div:</label>
+        <input type="number" id="divineInput" value="150">
+    </div>
+    
     <h1>Calculadora Divines a Chaos</h1>
     
-    <label for="divineInput">Valor actual de 1 Div:</label>
-    <input type="number" id="divineInput" value="150">
-    
-    <br>
-
     <label for="quantityInput">Cantidad de Divs:</label>
     <input type="number" id="quantityInput">
     
@@ -55,6 +60,17 @@
     <button onclick="calcular()">Calcular</button>
     
     <div id="result"></div>
+
+    <h1>Calculadora Chaos a Divines</h1>
+    
+    <label for="quantityChaosInput">Cantidad:</label>
+    <input type="number" id="quantityChaosInput">
+    
+    <br>
+
+    <button onclick="calcularInverso()">Calcular</button>
+    
+    <div id="resultInverso"></div>
 
     <script>
         function calcular() {
@@ -78,6 +94,24 @@
                 <p>Cantidad de Divines: ${cantidadDivines}</p>
                 <p>Equivalente a Chaos: ${resultadoDivinesChaos} Chaos</p>
                 <p>Divines + Chaos: ${resultadoDivsChaos.divs} div ${resultadoDivsChaos.chaos} Chaos</p>
+            `;
+        }
+
+        function calcularInverso() {
+            var valorChaosADivine = parseFloat(document.getElementById('divineInput').value);
+            var cantidadChaos = parseFloat(document.getElementById('quantityChaosInput').value);
+
+            if (isNaN(valorChaosADivine) || isNaN(cantidadChaos)) {
+                alert("Por favor, ingresa valores válidos.");
+                return;
+            }
+
+            var resultadoDivines = cantidadChaos / valorChaosADivine;
+            var resultadoDivinesEnteros = Math.floor(resultadoDivines);
+            var restoDivines = resultadoDivines % 1;
+
+            document.getElementById('resultInverso').innerHTML = `
+                <p>Equivalente a Divines: ${resultadoDivinesEnteros} Divines ${Math.round(restoDivines * valorChaosADivine)} Chaos</p>
             `;
         }
     </script>
